@@ -1,17 +1,18 @@
 class LoaderView {
+  constructor() {
+    this.cardsContainer = document.querySelector(".loader__container");
+  }
   showLoader() {
-    document.querySelector(".cards-wrapper").insertAdjacentHTML(
+    this.cardsContainer.insertAdjacentHTML(
       "afterbegin",
-      `<div class="d-flex justify-content-center">
-      <div class="spinner-border" role="status">
-        
-      </div>
+      `<div class="loader">
+      <div class="loader__element"></div>
     </div>`
     );
   }
 
   removeLoader() {
-    const loader = document.querySelector(".spinner-border");
+    const loader = document.querySelector(".loader");
     if (loader) {
       loader.remove();
     }

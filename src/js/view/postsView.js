@@ -1,10 +1,11 @@
 class PostsView {
   constructor() {
-    this.container = document.querySelector(".cards-wrapper");
-    this.header = document.querySelector(".header-title");
+    this.container = document.querySelector(".posts__wrapper");
+    this.header = document.querySelector(".header__title");
   }
   renderPosts(posts) {
     this.clearContainer();
+
     this.changeHeaderTitle();
     let fragment = "";
     posts.forEach((post) => {
@@ -16,19 +17,22 @@ class PostsView {
     this.container.innerHTML = "";
   }
   static createPostTemplate(post) {
-    return `<div class="card m-5">
-    <div class="card-body">
-      <h5 class="card-title">${post.id} ${post.title}</h5>
-      <p class="card-text">${post.body}</p>
-      <a href="#" class="btn btn-primary" data-post-id="${post.id}">Comments</a>
+    return `<div class="posts__card">
+    <div>
+      <div class="posts__card-header">${post.title}</div>
+      <div class="posts__card-body">
+        ${post.body}
+      </div>
+    </div>
+    <div class="posts__card-btns">
+      <button type="button" class="posts__card-btn" data-post-id="${post.id}">Show Comments</button>
     </div>
   </div>`;
   }
 
   changeHeaderTitle() {
     this.header.textContent = "All Posts";
-  }
-}
+  }}
 
 const postsView = new PostsView();
 

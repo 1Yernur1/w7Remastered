@@ -23,7 +23,7 @@ function initApp() {
 }
 
 function onContainerClickHandler(e) {
-  e.preventDefault;
+  e.preventDefault();
   if (e.target.dataset.postId) {
     postWithCommentsView.clearContainer();
     loaderView.showLoader();
@@ -35,6 +35,7 @@ function onContainerClickHandler(e) {
       })
       .catch((err) => console.log(err));
   } else if (e.target.classList.contains("btn-back")) {
+    postWithCommentsView.clearContainer();
     initApp();
   }
 }

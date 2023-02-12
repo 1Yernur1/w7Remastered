@@ -1,1 +1,14 @@
-@import "../../node_modules/bootstrap/scss/bootstrap";
+// @import "../../node_modules/bootstrap/scss/bootstrap";
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+@import "abstract/animations";
+@import "abstract/colors";
+
+@import "base/base";
+
+@import "components/loader";
+
+@import "layout/posts";
+@import "layout/header";
+@import "layout/comments";

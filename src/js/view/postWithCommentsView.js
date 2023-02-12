@@ -1,17 +1,16 @@
 class PostWithCommentsView {
   constructor() {
-    this.container = document.querySelector(".cards-wrapper");
-    this.header = document.querySelector(".header-title");
+    this.containerPost = document.querySelector(".posts__wrapper");
+    this.containerComments = document.querySelector(".comments__wrapper");
+    this.header = document.querySelector(".header__title");
   }
   renderPostWithComments({ post, comments }) {
     this.clearContainer();
     this.changeHeaderTitle(post);
     const postTemplate = this.renderPost(post);
     const commentsTemplate = this.renderComments(comments);
-    this.container.insertAdjacentHTML(
-      "afterbegin",
-      postTemplate + commentsTemplate
-    );
+    this.containerPost.insertAdjacentHTML("afterbegin", postTemplate);
+    this.containerComments.insertAdjacentHTML("afterbegin", commentsTemplate);
   }
 
   renderPost(post) {
@@ -26,29 +25,34 @@ class PostWithCommentsView {
     return fragment;
   }
   createCommentTemplate(comment) {
-    return `<div class="card m-5">
-    <h5 class="card-header">${comment.email}</h5>
-    <div class="card-body">
-      <h5 class="card-title">Name: ${comment.name}</h5>
-      <p class="card-text">${comment.body}</p>
-    </div>
-  </div>`;
-  }
-  createPostTemplate(post) {
-    return `<div class="card m-5">
-    <div class="card-body">
-      <h5 class="card-title">${post.id} ${post.title}</h5>
-      <p class="card-text">${post.body}</p>
-      <div class="d-flex justify-content-between">
-        <a href="#" class="btn btn-primary" data-post-id="${post.id}">Comments</a>
-        <a href="#" class="btn btn-danger btn-back">Back to all Posts</a>
+    return `<div class="comments__card">
+    <div class="comments__card-header"><span>Email:</span> ${comment.email}</div>
+    <div class="comments__card-body">
+      <div class="comments__card-title"><span>Title:</span> ${comment.name}</div>
+      <div class="comments__card-description">
+        <span>Description: </span>
+        <p>${comment.body}</p>
       </div>
     </div>
   </div>`;
   }
 
+  createPostTemplate(post) {
+    return `<div class="posts__card">
+    <div class="posts__card-header">${post.title}</div>
+    <div class="posts__card-body">
+      ${post.body}
+    </div>
+    <div class="posts__card-btns">
+      <button type="button" class="posts__card-btn" data-post-id="${post.id}">Show Comments</button>
+      <button type="button" class="posts__card-btn btn-back">Back</button>
+    </div>
+  </div>`;
+  }
+
   clearContainer() {
-    this.container.innerHTML = "";
+    this.containerPost.innerHTML = "";
+    this.containerComments.innerHTML = "";
   }
   changeHeaderTitle({ id }) {
     this.header.textContent = `Post ${id}`;

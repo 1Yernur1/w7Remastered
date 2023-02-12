@@ -1,0 +1,9 @@
+.header {
+  padding: 2rem;
+  &__title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    color: $color-white;
+  }
+}
