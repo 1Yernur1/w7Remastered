@@ -28,15 +28,6 @@ class PostsView {
   changeHeaderTitle() {
     this.header.textContent = "All Posts";
   }
-
-  showLoader() {
-    document.body.insertAdjacentHTML(
-      "afterbegin",
-      `<div class="spinner-border text-primary" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>`
-    );
-  }
 }
 
 const postsView = new PostsView();
